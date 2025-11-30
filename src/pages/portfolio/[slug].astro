@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { portfolioItems } from '../../data/portfolio.js';
+import MotionWrapper from '../../components/react/MotionWrapper.jsx';
+
+export async function getStaticPaths() {
+  return portfolioItems.map((item) => ({
+    params: { slug: item.slug },
+    props: { item },
+  }));
+}
+
+const { item } = Astro.props;
+---
+
+<BaseLayout 
+  title={`${item.title} - Portfolio - AnikeBrands`}
+  description={item.description}
+>
+  <!-- Hero Section -->
+  <section class="section-lg bg-gradient-to-br from-gray-50 to-white">
+    <div class="container">
+      <MotionWrapper client:load>
+        <a href="/projects" class="text-primary hover:text-accentPink mb-6 inline-block">
+          ← Back to Projects
+        </a>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">{item.title}</h1>
+        <p class="text-xl text-gray-600 max-w-3xl">{item.description}</p>
+      </MotionWrapper>
+    </div>
+  </section>
+  
+  <!-- Project Image -->
+  <section class="section">
+    <div class="container">
+      <MotionWrapper client:load delay={0.2}>
+        <div class="rounded-3xl overflow-hidden shadow-2xl">
+          <img 
+            src={item.image} 
+            alt={item.title}
+            class="w-full h-auto"
+          />
+        </div>
+      </MotionWrapper>
+    </div>
+  </section>
+  
+  <!-- Project Details -->
+  <section class="section bg-gray-50">
+    <div class="container">
+      <div class="max-w-4xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-12">
+          <MotionWrapper client:load delay={0.3}>
+            <div>
+              <h2 class="text-2xl font-bold mb-6">Project Details</h2>
+              <div class="space-y-4">
+                <div>
+                  <span class="font-semibold text-gray-700">Client:</span>
+                  <span class="ml-2 text-gray-600">{item.client}</span>
+                </div>
+                <div>
+                  <span class="font-semibold text-gray-700">Year:</span>
+                  <span class="ml-2 text-gray-600">{item.year}</span>
+                </div>
+                <div>
+                  <span class="font-semibold text-gray-700">Category:</span>
+                  <span class="ml-2 text-gray-600 capitalize">{item.category}</span>
+                </div>
+              </div>
+            </div>
+          </MotionWrapper>
+          
+          <MotionWrapper client:load delay={0.4}>
+            <div>
+              <h2 class="text-2xl font-bold mb-6">Tags</h2>
+              <div class="flex flex-wrap gap-3">
+                {item.tags.map((tag) => (
+                  <span class="px-4 py-2 rounded-full bg-white border border-gray-200 text-gray-700">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </MotionWrapper>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Navigation -->
+  <section class="section">
+    <div class="container">
+      <div class="max-w-4xl mx-auto flex justify-between items-center">
+        <a href="/projects" class="btn btn-outline">
+          View All Projects
+        </a>
+        <a href="/contact" class="btn btn-primary">
+          Start Your Project
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+

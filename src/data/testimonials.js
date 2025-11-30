@@ -1,0 +1,38 @@
+export const testimonials = [
+  {
+    id: '1',
+    name: 'Dr. Chika Olomukoro',
+    role: 'Founder',
+    company: 'ChiCares',
+    content: 'Thank you Olamide, the branding you did, made it a lot easier. God used you to give me a good start. Well done my dear. May God bless all your endeavors in Jesus\' name.',
+    rating: 5,
+    avatar: '/Reviews/Dr. Chika Olomukoro.png',
+  },
+  {
+    id: '2',
+    name: 'Ms. Salem',
+    role: 'Founder',
+    company: 'Hebron and Sage and The Real Estate Chic',
+    content: 'Wow! I love every single thing. I could see that you really brought out your heart on this project. Everything is perfect and not even one complaint. I\'ll continue to blow your trumpet everywhere I go because you\'re actually a great brand consultant.',
+    rating: 5,
+    avatar: '/Reviews/MS. SALEM.jpg',
+  },
+  {
+    id: '3',
+    name: 'Mr. Obed Olabisi',
+    role: 'MC Obed',
+    company: '',
+    content: 'Working with you on my branding was an absolute pleasure. I got a logo that POPPED and captured my MC vibe perfectly! It represents me like I wanted. Huge thanks for your dedication, creativity and for listening to what I wanted. Your work with AnikeBrands elevated my look and feel as an MC and I\'m truly appreciative. Looking forward to more collabs and keeping my brand looking sharp!',
+    rating: 5,
+    avatar: '/Reviews/MR. OBED OLABISI.jpg',
+  },
+  {
+    id: '4',
+    name: 'Ms. Motunrayo Sofiat Yusuf',
+    role: 'Convener',
+    company: 'The Gospel Experience',
+    content: 'Thank you very much AnikeBrands for the amazing Brand Design well done for The Gospel Experience (TGE). Thank you for bringing in creativity, excellence and professionalism into this. The initial logo idea was given to you was not as amazing as the option you provided, thank you for bringing your best into this. We definitely like the brand identity, so much attention to details and nothing was left uncaptured. Thank you once again AnikeBrands!',
+    rating: 5,
+    avatar: '/Reviews/MS. MOTUNRAYO YUSUF.jpg',
+  },
+];

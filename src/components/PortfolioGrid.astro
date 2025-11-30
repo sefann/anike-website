@@ -1,0 +1,35 @@
+---
+interface Props {
+  items: Array<{
+    id: string;
+    title: string;
+    category: string;
+    image: string;
+    slug: string;
+  }>;
+}
+
+const { items } = Astro.props;
+---
+
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+  {items.map((item) => (
+    <a 
+      href={`/projects/${item.slug}`}
+      class="group block overflow-hidden rounded-2xl bg-gray-100 aspect-[4/3] relative"
+    >
+      <img 
+        src={item.image} 
+        alt={item.title}
+        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+          <span class="text-sm text-primary font-medium">{item.category}</span>
+          <h3 class="text-xl font-semibold mt-2">{item.title}</h3>
+        </div>
+      </div>
+    </a>
+  ))}
+</div>
+

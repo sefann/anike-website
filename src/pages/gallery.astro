@@ -1,0 +1,126 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import MotionWrapper from '../components/react/MotionWrapper.jsx';
+import GalleryGrid from '../components/react/GalleryGrid.jsx';
+
+// Get all gallery images from the galley folder
+const galleryImages = [
+  '/galley/ACCA-03.jpg',
+  '/galley/Adeola and Abiola-01.jpg',
+  '/galley/Adeola and Abiola-04.jpg',
+  '/galley/AGS COUNTDOWN-13.jpg',
+  '/galley/AGS FPI-20.jpg',
+  '/galley/AGS WAES-01.jpg',
+  '/galley/AGS WAES-02.jpg',
+  '/galley/AGS WAES-04.jpg',
+  '/galley/AGS WEBINAR-19.jpg',
+  '/galley/Aishtar IWD-22.jpg',
+  '/galley/AISHTAR JUNE-01.jpg',
+  '/galley/AWG POHP.jpg',
+  '/galley/BA SOCIALS 238-33.jpg',
+  '/galley/FEB 16TH.jpg',
+  '/galley/FEB 19TH.jpg',
+  '/galley/HNM LUGBE-37.jpg',
+  '/galley/ICLF DESIGN TRAINING-06.jpg',
+  '/galley/ICLF ITNBF-01.jpg',
+  '/galley/ICLF LLLY-02.jpg',
+  '/galley/ICLF SAW-07.jpg',
+  '/galley/ICLF SIPD-05.jpg',
+  '/galley/ICLF WD-01.jpg',
+  '/galley/ICLF WD-11.jpg',
+  '/galley/KEDDY FLYER-03.jpg',
+  '/galley/KENO ENG-1PRICE REVIEW.jpg',
+  '/galley/LUGBE HNM-45.jpg',
+  '/galley/LUGBE MMOTW-25.jpg',
+  '/galley/LUGBE TRYBE MAIN-36.jpg',
+  '/galley/MARCH 10TH.jpg',
+  '/galley/MAY 12TH-12.jpg',
+  '/galley/MMOTW-28.jpg',
+  '/galley/MND 30 POL 5.0-01.jpg',
+  '/galley/MND 30 POL 5.0-02.jpg',
+  '/galley/MND 30 POL-04.jpg',
+  '/galley/Mudo Zangl-01.jpg',
+  '/galley/POHP MARCH-03.jpg',
+  '/galley/POHP-21.jpg',
+  '/galley/POHPN-01.jpg',
+  '/galley/PRIOUT POHP-07.jpg',
+  '/galley/RCCG ANNIVERSARY-01.jpg',
+  '/galley/SFL JUNE-01.jpg',
+  '/galley/SFL JUNE-07.jpg',
+  '/galley/SFL JUNE-08.jpg',
+  '/galley/SFL JUNE-09.jpg',
+  '/galley/SFL MAY-05.jpg',
+  '/galley/SLC AB TEAM-01.jpg',
+  '/galley/WIBA-03.jpg',
+  '/galley/WIBA-10.jpg',
+];
+---
+
+<BaseLayout 
+  title="Gallery - AnikeBrands"
+  description="Browse through our visual gallery showcasing our creative design work and visual projects."
+>
+  <!-- Hero Section -->
+  <section class="section-lg relative overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+      <img 
+        src="/assets/gallery-banner.png" 
+        alt="Background"
+        class="w-full h-full object-cover"
+      />
+    </div>
+    
+    <!-- Dark Transparent Overlay -->
+    <div class="absolute inset-0 bg-black/80"></div>
+    
+    <div class="container relative z-10">
+      <div class="max-w-3xl mx-auto text-center">
+        <MotionWrapper client:load>
+          <h1 class="text-4xl md:text-5xl font-bold mb-6 text-white">
+            Design <span class="gradient-text">Gallery</span>
+          </h1>
+          <p class="text-xl text-gray-200">
+            A visual showcase of our creative work, featuring designs across 
+            branding, web, print, and digital media.
+          </p>
+        </MotionWrapper>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Gallery Grid -->
+  <section class="section bg-gray-900">
+    <div class="container">
+      <GalleryGrid client:load images={galleryImages} />
+    </div>
+  </section>
+  
+  <!-- CTA Section -->
+  <section class="section relative overflow-hidden">
+    <!-- Black Abstract Background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-black via-[#0a0a0a] to-black">
+      <div class="absolute inset-0 opacity-40" style="background-image: radial-gradient(circle at 30% 40%, rgba(139, 92, 246, 0.15) 0%, transparent 50%), radial-gradient(circle at 70% 60%, rgba(236, 72, 153, 0.15) 0%, transparent 50%), radial-gradient(circle at 50% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);"></div>
+      <div class="absolute inset-0" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(139, 92, 246, 0.03) 2px, rgba(139, 92, 246, 0.03) 4px);"></div>
+    </div>
+    
+    <div class="container relative z-10">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white">
+          Love What You <span class="gradient-text">See?</span>
+        </h2>
+        <p class="text-gray-300 mb-8">
+          Let's create something amazing together for your brand.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/projects" class="btn btn-primary btn-lg">
+            View All Projects
+          </a>
+          <a href="/contact" class="btn btn-outline btn-lg text-white border-white hover:bg-white hover:text-gray-900">
+            Get in Touch
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

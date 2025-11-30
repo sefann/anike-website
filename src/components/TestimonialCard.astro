@@ -1,0 +1,49 @@
+---
+interface Props {
+  name: string;
+  role: string;
+  company: string;
+  content: string;
+  avatar?: string;
+  rating?: number;
+}
+
+const { name, role, company, content, avatar, rating = 5 } = Astro.props;
+---
+
+<div class="relative p-8 md:p-12 rounded-2xl bg-gray-900 border border-gray-800 shadow-xl">
+  <!-- Large Quote Icon -->
+  <div class="absolute top-6 left-6 w-20 h-20 bg-primary rounded-full flex items-center justify-center">
+    <span class="text-4xl font-bold text-white leading-none">"</span>
+  </div>
+  
+  <!-- Testimonial Content -->
+  <div class="pt-8 md:pt-12">
+    <p class="text-white text-lg md:text-xl mb-8 leading-relaxed pl-4">
+      {content}
+    </p>
+    
+    <!-- Author Info -->
+    <div class="flex items-center gap-4 mb-6">
+      {avatar && (
+        <img 
+          src={avatar} 
+          alt={name}
+          class="w-16 h-16 rounded-full object-cover border-2 border-primary"
+        />
+      )}
+      <div>
+        <p class="font-bold text-white text-lg">{name}</p>
+        <p class="text-gray-400 text-sm">{role}</p>
+        {company && (
+          <p class="text-primary text-sm font-medium">{company}</p>
+        )}
+      </div>
+    </div>
+    
+    <!-- Progress Bar/Slider Indicator -->
+    <div class="w-full h-1 bg-gray-700 rounded-full overflow-hidden">
+      <div class="h-full bg-gradient-to-r from-accentPink to-primary" style="width: 20%;"></div>
+    </div>
+  </div>
+</div>

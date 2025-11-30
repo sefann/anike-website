@@ -1,0 +1,142 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FeaturedWorkCard from '../components/FeaturedWorkCard.astro';
+import { portfolioItems } from '../data/portfolio.js';
+import { brandDetails } from '../data/brands.js';
+import MotionWrapper from '../components/react/MotionWrapper.jsx';
+import CountUp from '../components/react/CountUp.jsx';
+---
+
+<BaseLayout 
+  title="Projects - AnikeBrands"
+  description="Explore our portfolio of creative design projects across branding, web design, UI/UX, and more."
+>
+  <!-- Hero Section -->
+  <section class="section-lg relative overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+      <img 
+        src="/assets/project-banner.png" 
+        alt="Background"
+        class="w-full h-full object-cover"
+      />
+    </div>
+    
+    <!-- Dark Transparent Overlay -->
+    <div class="absolute inset-0 bg-black/80"></div>
+    
+    <div class="container relative z-10">
+      <div class="max-w-3xl mx-auto text-center">
+        <MotionWrapper client:load>
+          <h1 class="mb-6 text-white">
+            Our <span class="gradient-text">Projects</span>
+          </h1>
+          <p class="text-xl text-gray-200">
+            A collection of our finest work, showcasing creativity and innovation 
+            across various industries and design disciplines.
+          </p>
+        </MotionWrapper>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Projects Section -->
+  <section class="section relative overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+      <img 
+        src="/assets/genback.png" 
+        alt="Background"
+        class="w-full h-full object-cover"
+      />
+    </div>
+    
+    <!-- Dark Transparent Overlay -->
+    <div class="absolute inset-0 bg-black/80"></div>
+    
+    <div class="container relative z-10">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">
+          Brand Identity <span class="gradient-text">Projects</span>
+        </h2>
+        <p class="text-lg text-gray-200 max-w-3xl mx-auto">
+          Building cohesive, strategic, and timeless brand systems. Click any project to explore the full brand identity journey.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8 mb-8">
+        {portfolioItems.map((item, index) => {
+          // Map slugs to background logo filenames
+          const backgroundLogoMap = {
+            '30-pol': '/background logos/30pointsoflight.png',
+            'burning-altar': '/background logos/burningalter.png',
+            'creamy-crumbles': '/background logos/CCRUMBLES LOGO-B.png',
+            'chicares': '/background logos/chicares.png',
+            'hebron-sage': '/background logos/hebron and sage.jpg',
+            'justice-research-institute': '/background logos/JRI LOGO-B.jpg',
+            'mc-obed': '/background logos/mc obed8.png',
+            'sallyz': '/background logos/SALLYZ LOGO-B.png',
+            'the-gospel-experience': '/background logos/TGE LOGOS-B.png',
+            'the-real-estate-chic': '/background logos/therealestatechic.jpg',
+            'unpack-it': '/background logos/UNPACK IT LOGO-B.png',
+          };
+          const logo = backgroundLogoMap[item.slug] || null;
+          return (
+            <MotionWrapper client:load delay={index * 0.1}>
+              <FeaturedWorkCard 
+                title={item.title}
+                category={item.category}
+                description={item.description}
+                logo={logo}
+                tags={item.tags}
+                slug={item.slug}
+              />
+            </MotionWrapper>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+  
+  <!-- Stats Section -->
+  <section class="section bg-gray-50">
+    <div class="container">
+      <div class="grid md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+        {[
+          { number: 50, suffix: '+', label: 'Projects Completed' },
+          { number: 30, suffix: '+', label: 'Happy Clients' },
+          { number: 5, suffix: '+', label: 'Years Experience' },
+          { number: 100, suffix: '%', label: 'Client Satisfaction' },
+        ].map((stat, index) => (
+          <MotionWrapper client:load delay={index * 0.1}>
+            <div class="text-center">
+              <div class="text-4xl md:text-5xl font-bold gradient-text mb-2">
+                <CountUp client:load end={stat.number} suffix={stat.suffix} startDelay={200 + index * 100} />
+              </div>
+              <p class="text-gray-600">{stat.label}</p>
+            </div>
+          </MotionWrapper>
+        ))}
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA Section -->
+  <section class="section">
+    <div class="container">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-4">
+          Have a Project in <span class="gradient-text">Mind?</span>
+        </h2>
+        <p class="text-gray-600 mb-8">
+          Let's collaborate to create something extraordinary for your brand.
+        </p>
+        <a href="/contact" class="btn btn-primary btn-lg">
+          Start a Project
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+

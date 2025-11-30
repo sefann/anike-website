@@ -1,0 +1,58 @@
+---
+interface Props {
+  title: string;
+  category: string;
+  description: string;
+  image?: string;
+  logo?: string;
+  tags: string[];
+  slug: string;
+}
+
+const { title, category, description, image, logo, tags, slug } = Astro.props;
+---
+
+<a 
+  href={`/projects/${slug}`}
+  class="group block bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800 hover:border-primary/50 transition-all"
+>
+  <div class="mb-6 overflow-hidden rounded-lg bg-gray-900" style="min-height: 250px;">
+    {logo ? (
+      <img 
+        src={logo} 
+        alt={`${title} Logo`}
+        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        style="min-height: 250px;"
+      />
+    ) : image ? (
+      <img 
+        src={image} 
+        alt={title}
+        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        style="min-height: 250px;"
+      />
+    ) : null}
+  </div>
+  
+  <div>
+    <span class="text-primary text-sm font-medium mb-2 block capitalize">{category}</span>
+    <h3 class="text-xl md:text-2xl font-bold text-white mb-3">{title}</h3>
+    <p class="text-gray-300 text-sm mb-4 leading-relaxed">{description}</p>
+    
+    <div class="flex flex-wrap gap-2 mb-4">
+      {tags.map((tag) => (
+        <span class="px-3 py-1 rounded-full bg-gray-800 text-white text-xs font-medium border border-gray-700">
+          {tag}
+        </span>
+      ))}
+    </div>
+    
+    <span class="text-white font-medium inline-flex items-center gap-2 group-hover:gap-3 transition-all text-sm">
+      Learn More
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </span>
+  </div>
+</a>
+

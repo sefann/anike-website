@@ -1,0 +1,72 @@
+---
+import HeroSlider from './react/HeroSlider.jsx';
+import HeroStats from './react/HeroStats.jsx';
+import HeroTypewriter from './react/HeroTypewriter.jsx';
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  showStats?: boolean;
+}
+
+const { 
+  title = 'I Don\'t Just Build Brands. I Nurture Them.',
+  subtitle = 'Creating identities that tell stories, connect emotionally, and inspire action. I blend the art of design with the science of communication to create brands that speak clearly to the right audience.',
+  showStats = true
+} = Astro.props;
+
+const sliderImages = [
+  '/anike photos/aniketwo.PNG',
+  '/anike photos/anikefour.PNG',
+  '/anike photos/anikefive.JPG',
+];
+---
+
+<section class="py-16 md:py-20 relative overflow-hidden bg-gray-900">
+  <!-- Background Image -->
+  <div class="absolute inset-0">
+    <img 
+      src="/assets/home-banner.png" 
+      alt="Background"
+      class="w-full h-full object-cover"
+    />
+  </div>
+  
+  <!-- Dark Transparent Overlay -->
+  <div class="absolute inset-0 bg-black/80"></div>
+  
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+      <!-- Left Side - Content -->
+      <div class="text-white">
+        <HeroTypewriter client:load />
+        
+        <p class="text-base md:text-lg text-gray-300 mb-8 leading-relaxed max-w-2xl">
+          {subtitle}
+        </p>
+        
+        <!-- LinkedIn Button -->
+        <a 
+          href="https://www.linkedin.com/in/olamidefatosin/" 
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-3 px-6 py-3 bg-white text-gray-900 rounded-lg hover:bg-gray-100 transition-all mb-8 font-medium"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+          LinkedIn
+        </a>
+        
+        {showStats && (
+          <HeroStats client:load />
+        )}
+      </div>
+      
+      <!-- Right Side - Image Slider -->
+      <div class="relative h-[400px] md:h-[500px] lg:h-[550px] rounded-2xl overflow-hidden">
+        <HeroSlider client:load images={sliderImages} />
+      </div>
+    </div>
+  </div>
+</section>

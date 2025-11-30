@@ -1,0 +1,713 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import MotionWrapper from '../components/react/MotionWrapper.jsx';
+import CountUp from '../components/react/CountUp.jsx';
+---
+
+<BaseLayout 
+  title="About - AnikeBrands"
+  description="Learn more about AnikeBrands and our passion for creative design."
+>
+  <!-- Hero Section -->
+  <section class="section-lg relative overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+      <img 
+        src="/assets/about-banner.png" 
+        alt="Background"
+        class="w-full h-full object-cover"
+      />
+    </div>
+    
+    <!-- Dark Transparent Overlay -->
+    <div class="absolute inset-0 bg-black/90"></div>
+    
+    <div class="container relative z-10">
+      <div class="max-w-3xl mx-auto text-center">
+        <MotionWrapper client:load>
+          <h1 class="mb-6 text-white">
+            About <span class="gradient-text">AnikeBrands</span>
+          </h1>
+          <p class="text-xl text-gray-200 mb-8">
+            "Anike," a Yoruba name meaning "to care for" is the heart of everything we do. We create identities that tell stories, connect emotionally, and inspire action.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/portfolio.pdf" class="btn btn-primary btn-lg" download>
+              Download Portfolio
+            </a>
+            <a href="https://drive.google.com/drive/folders/1-qIOIqi49I9j41ZMrZ3NJd6zxlKKpa8e" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-lg text-white border-white hover:bg-white hover:text-gray-900">
+              View Brochures
+            </a>
+          </div>
+        </MotionWrapper>
+      </div>
+    </div>
+  </section>
+  
+  <!-- My Story Section -->
+  <section class="section relative overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+      <img 
+        src="/assets/genback.png" 
+        alt="Background"
+        class="w-full h-full object-cover"
+      />
+    </div>
+    
+    <!-- Dark Transparent Overlay -->
+    <div class="absolute inset-0 bg-black/80"></div>
+    
+    <div class="container relative z-10">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <MotionWrapper client:load delay={0.1}>
+            <div>
+              <h2 class="text-2xl md:text-3xl font-bold mb-4 text-white">My Story</h2>
+              <div class="prose max-w-none mb-6">
+                <p class="text-gray-300 mb-3 leading-relaxed text-sm md:text-base">
+                  Founded by <strong class="text-white">Olamide Fatosin</strong>, a Brand Identity Designer with a B.A. in Linguistics, Anike Brands is built on a deep understanding of communication, culture, and design psychology. We don't just design visuals; we create identities that tell stories, connect emotionally, and inspire action.
+                </p>
+                <p class="text-gray-300 mb-3 leading-relaxed text-sm md:text-base">
+                  We blend the art of design with the science of communication. This unique approach allows us to create brands that not only look good but speak clearly to the right audience. Every brand deserves to be nurtured with intention, creativity, and strategy.
+                </p>
+                <p class="text-gray-300 leading-relaxed text-sm md:text-base">
+                  At Anike Brands, every project is handled with care because your brand deserves more than just attention; it deserves affection. We treat every project like it's our own. We truly care about your brand's growth, your audience's experience, and your story's impact.
+                </p>
+              </div>
+              
+              <!-- Stats Cards -->
+              <div class="grid grid-cols-4 gap-3">
+                {[
+                  { number: 50, suffix: '+', label: 'Projects Completed' },
+                  { number: 30, suffix: '+', label: 'Happy Clients' },
+                  { number: 5, suffix: '+', label: 'Years Experience' },
+                  { number: 100, suffix: '%', label: 'Client Satisfaction' },
+                ].map((stat, index) => (
+                  <MotionWrapper client:load delay={0.3 + index * 0.1}>
+                    <div class="bg-white/5 backdrop-blur-sm rounded-xl p-3 text-center border border-white/10">
+                      <div class="text-xl md:text-2xl font-bold gradient-text mb-1">
+                        <CountUp client:load end={stat.number} suffix={stat.suffix} startDelay={300 + index * 100} />
+                      </div>
+                      <p class="text-gray-300 text-xs">{stat.label}</p>
+                    </div>
+                  </MotionWrapper>
+                ))}
+              </div>
+            </div>
+          </MotionWrapper>
+          
+          <MotionWrapper client:load delay={0.2}>
+            <div class="max-w-md mx-auto rounded-3xl overflow-hidden shadow-2xl bg-gray-900 inline-block">
+              <img 
+                src="/anike photos/anikenine.jpg" 
+                alt="Olamide Fatosin - AnikeBrands Founder"
+                class="w-full h-auto block"
+              />
+            </div>
+          </MotionWrapper>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills & Expertise Section -->
+  <section class="section relative overflow-hidden">
+    <!-- Black Abstract Background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-black via-[#0a0a0a] to-black">
+      <div class="absolute inset-0 opacity-40" style="background-image: radial-gradient(circle at 30% 40%, rgba(139, 92, 246, 0.15) 0%, transparent 50%), radial-gradient(circle at 70% 60%, rgba(236, 72, 153, 0.15) 0%, transparent 50%), radial-gradient(circle at 50% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);"></div>
+      <div class="absolute inset-0" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(139, 92, 246, 0.03) 2px, rgba(139, 92, 246, 0.03) 4px);"></div>
+    </div>
+    
+    <div class="container relative z-10">
+      <div class="max-w-6xl mx-auto">
+        <MotionWrapper client:load>
+          <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              Skills & Expertise
+            </h2>
+            <p class="text-lg text-gray-300 max-w-3xl mx-auto">
+              A comprehensive set of skills and tools that enable me to deliver exceptional design solutions across various mediums and platforms.
+            </p>
+          </div>
+
+          <!-- Skills Grid -->
+          <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <!-- Design Tools -->
+            <div class="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
+              <div class="flex items-center gap-4 mb-6">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-white">Design Tools</h3>
+              </div>
+              <div class="space-y-4">
+                {[
+                  { name: 'Adobe Creative Suite', percentage: 95 },
+                  { name: 'Figma', percentage: 90 },
+                  { name: 'Sketch', percentage: 85 },
+                  { name: 'Canva Pro', percentage: 80 },
+                ].map((skill) => (
+                  <div key={skill.name}>
+                    <div class="flex justify-between mb-2">
+                      <span class="text-white font-medium">{skill.name}</span>
+                      <span class="text-gray-400">{skill.percentage}%</span>
+                    </div>
+                    <div class="w-full h-2 bg-gray-700 rounded-full overflow-hidden">
+                      <div 
+                        class="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full transition-all duration-1000"
+                        style={`width: ${skill.percentage}%`}
+                      ></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <!-- Brand Identity -->
+            <div class="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
+              <div class="flex items-center gap-4 mb-6">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-white">Brand Identity</h3>
+              </div>
+              <div class="space-y-4">
+                {[
+                  { name: 'Logo Design', percentage: 95 },
+                  { name: 'Brand Guidelines', percentage: 90 },
+                  { name: 'Typography', percentage: 88 },
+                  { name: 'Color Theory', percentage: 92 },
+                ].map((skill) => (
+                  <div key={skill.name}>
+                    <div class="flex justify-between mb-2">
+                      <span class="text-white font-medium">{skill.name}</span>
+                      <span class="text-gray-400">{skill.percentage}%</span>
+                    </div>
+                    <div class="w-full h-2 bg-gray-700 rounded-full overflow-hidden">
+                      <div 
+                        class="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full transition-all duration-1000"
+                        style={`width: ${skill.percentage}%`}
+                      ></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <!-- Product Design -->
+            <div class="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
+              <div class="flex items-center gap-4 mb-6">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-white">Product Design</h3>
+              </div>
+              <div class="space-y-4">
+                {[
+                  { name: 'UI/UX Design', percentage: 88 },
+                  { name: 'Web Design', percentage: 85 },
+                  { name: 'User Interface', percentage: 87 },
+                  { name: 'Prototyping', percentage: 82 },
+                ].map((skill) => (
+                  <div key={skill.name}>
+                    <div class="flex justify-between mb-2">
+                      <span class="text-white font-medium">{skill.name}</span>
+                      <span class="text-gray-400">{skill.percentage}%</span>
+                    </div>
+                    <div class="w-full h-2 bg-gray-700 rounded-full overflow-hidden">
+                      <div 
+                        class="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full transition-all duration-1000"
+                        style={`width: ${skill.percentage}%`}
+                      ></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <!-- Print Design -->
+            <div class="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
+              <div class="flex items-center gap-4 mb-6">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-white">Print Design</h3>
+              </div>
+              <div class="space-y-4">
+                {[
+                  { name: 'Layout Design', percentage: 90 },
+                  { name: 'Print Production', percentage: 85 },
+                  { name: 'Packaging Design', percentage: 80 },
+                  { name: 'Marketing Materials', percentage: 88 },
+                ].map((skill) => (
+                  <div key={skill.name}>
+                    <div class="flex justify-between mb-2">
+                      <span class="text-white font-medium">{skill.name}</span>
+                      <span class="text-gray-400">{skill.percentage}%</span>
+                    </div>
+                    <div class="w-full h-2 bg-gray-700 rounded-full overflow-hidden">
+                      <div 
+                        class="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full transition-all duration-1000"
+                        style={`width: ${skill.percentage}%`}
+                      ></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <!-- Additional Skills -->
+          <div>
+            <h3 class="text-xl font-bold mb-6 text-white text-center">Additional Skills</h3>
+            <div class="flex flex-wrap gap-3 justify-center">
+              {[
+                'Motion Graphics', '3D Design',
+                'Illustration', 'Icon Design', 'Social Media Design', 'Presentation Design',
+                'Infographic Design', 'Book Design', 'Packaging', 'Typography'
+              ].map((skill) => (
+                <span class="px-4 py-2 rounded-full bg-gray-800/50 text-white border border-gray-700 hover:border-purple-500 transition-colors">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+        </MotionWrapper>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience & Education Section -->
+  <section class="section relative overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+      <img 
+        src="/assets/genback.png" 
+        alt="Background"
+        class="w-full h-full object-cover"
+      />
+    </div>
+    
+    <!-- Dark Transparent Overlay -->
+    <div class="absolute inset-0 bg-black/80"></div>
+    
+    <div class="container relative z-10">
+      <div class="max-w-6xl mx-auto">
+        <MotionWrapper client:load>
+          <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              Experience & Education
+            </h2>
+            <p class="text-lg text-gray-300 max-w-3xl mx-auto">
+              Over the years, we have improved on our skills through professional training and hands-on experience, building expertise in brand design and visual communication.
+            </p>
+          </div>
+
+          <!-- Professional Certifications & Training -->
+          <div class="mb-16">
+            <div class="flex items-center gap-3 mb-8">
+              <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold text-white">Professional Certifications & Training</h3>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+              <!-- Foundations of Project Management -->
+              <div class="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
+                <div class="flex items-start gap-4">
+                  <div class="w-12 h-12 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                    </svg>
+                  </div>
+                  <div class="flex-1">
+                    <h4 class="text-xl font-bold mb-2 text-white">Foundations of Project Management</h4>
+                    <p class="text-purple-400 font-medium mb-2">Coursera</p>
+                    <p class="text-gray-300 mb-3 text-sm">Comprehensive project management fundamentals covering planning, execution, and team leadership.</p>
+                    <div class="flex items-center gap-2 mb-3">
+                      <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                      </svg>
+                      <span class="text-gray-400 text-sm">April 2023</span>
+                    </div>
+                    <div class="mt-4">
+                      <p class="text-sm font-semibold text-white mb-2">Key Learnings:</p>
+                      <ul class="list-none space-y-1">
+                        <li class="text-sm text-gray-300 flex items-start gap-2">
+                          <span class="text-purple-400 mt-1.5">•</span>
+                          <span>Mastered project planning methodologies</span>
+                        </li>
+                        <li class="text-sm text-gray-300 flex items-start gap-2">
+                          <span class="text-purple-400 mt-1.5">•</span>
+                          <span>Developed leadership and team management skills</span>
+                        </li>
+                        <li class="text-sm text-gray-300 flex items-start gap-2">
+                          <span class="text-purple-400 mt-1.5">•</span>
+                          <span>Learned risk assessment and mitigation strategies</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Intro to Analytic Thinking -->
+              <div class="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
+                <div class="flex items-start gap-4">
+                  <div class="w-12 h-12 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                    </svg>
+                  </div>
+                  <div class="flex-1">
+                    <h4 class="text-xl font-bold mb-2 text-white">Intro to Analytic Thinking, Data Science, and Data Mining</h4>
+                    <p class="text-purple-400 font-medium mb-2">Coursera</p>
+                    <p class="text-gray-300 mb-3 text-sm">Advanced data analysis and mining techniques for business intelligence and decision making.</p>
+                    <div class="flex items-center gap-2 mb-3">
+                      <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                      </svg>
+                      <span class="text-gray-400 text-sm">July 2021</span>
+                    </div>
+                    <div class="mt-4">
+                      <p class="text-sm font-semibold text-white mb-2">Key Learnings:</p>
+                      <ul class="list-none space-y-1">
+                        <li class="text-sm text-gray-300 flex items-start gap-2">
+                          <span class="text-purple-400 mt-1.5">•</span>
+                          <span>Gained expertise in data analysis fundamentals</span>
+                        </li>
+                        <li class="text-sm text-gray-300 flex items-start gap-2">
+                          <span class="text-purple-400 mt-1.5">•</span>
+                          <span>Learned data mining techniques and tools</span>
+                        </li>
+                        <li class="text-sm text-gray-300 flex items-start gap-2">
+                          <span class="text-purple-400 mt-1.5">•</span>
+                          <span>Developed analytical thinking skills</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Big Data and Language 1 -->
+              <div class="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
+                <div class="flex items-start gap-4">
+                  <div class="w-12 h-12 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/>
+                    </svg>
+                  </div>
+                  <div class="flex-1">
+                    <h4 class="text-xl font-bold mb-2 text-white">Big Data and Language 1</h4>
+                    <p class="text-purple-400 font-medium mb-2">Coursera</p>
+                    <p class="text-gray-300 mb-3 text-sm">Introduction to big data processing and natural language processing technologies.</p>
+                    <div class="flex items-center gap-2 mb-3">
+                      <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                      </svg>
+                      <span class="text-gray-400 text-sm">June 2021</span>
+                    </div>
+                    <div class="mt-4">
+                      <p class="text-sm font-semibold text-white mb-2">Key Learnings:</p>
+                      <ul class="list-none space-y-1">
+                        <li class="text-sm text-gray-300 flex items-start gap-2">
+                          <span class="text-purple-400 mt-1.5">•</span>
+                          <span>Understanding of big data technologies</span>
+                        </li>
+                        <li class="text-sm text-gray-300 flex items-start gap-2">
+                          <span class="text-purple-400 mt-1.5">•</span>
+                          <span>Natural language processing fundamentals</span>
+                        </li>
+                        <li class="text-sm text-gray-300 flex items-start gap-2">
+                          <span class="text-purple-400 mt-1.5">•</span>
+                          <span>Data processing and analysis skills</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Crash Course on Python -->
+              <div class="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
+                <div class="flex items-start gap-4">
+                  <div class="w-12 h-12 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                    </svg>
+                  </div>
+                  <div class="flex-1">
+                    <h4 class="text-xl font-bold mb-2 text-white">Crash Course on Python</h4>
+                    <p class="text-purple-400 font-medium mb-2">Coursera</p>
+                    <p class="text-gray-300 mb-3 text-sm">Comprehensive Python programming course covering fundamentals to advanced concepts.</p>
+                    <div class="flex items-center gap-2 mb-3">
+                      <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                      </svg>
+                      <span class="text-gray-400 text-sm">December 2020</span>
+                    </div>
+                    <div class="mt-4">
+                      <p class="text-sm font-semibold text-white mb-2">Key Learnings:</p>
+                      <ul class="list-none space-y-1">
+                        <li class="text-sm text-gray-300 flex items-start gap-2">
+                          <span class="text-purple-400 mt-1.5">•</span>
+                          <span>Mastered Python programming fundamentals</span>
+                        </li>
+                        <li class="text-sm text-gray-300 flex items-start gap-2">
+                          <span class="text-purple-400 mt-1.5">•</span>
+                          <span>Learned advanced Python concepts</span>
+                        </li>
+                        <li class="text-sm text-gray-300 flex items-start gap-2">
+                          <span class="text-purple-400 mt-1.5">•</span>
+                          <span>Developed problem-solving with Python</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Data Analysis Masterclass -->
+              <div class="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
+                <div class="flex items-start gap-4">
+                  <div class="w-12 h-12 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                    </svg>
+                  </div>
+                  <div class="flex-1">
+                    <h4 class="text-xl font-bold mb-2 text-white">Data Analysis Masterclass (4 courses in 1)</h4>
+                    <p class="text-purple-400 font-medium mb-2">Coursera</p>
+                    <p class="text-gray-300 mb-3 text-sm">Comprehensive data analysis training covering multiple analytical techniques and tools.</p>
+                    <div class="flex items-center gap-2 mb-3">
+                      <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                      </svg>
+                      <span class="text-gray-400 text-sm">2020</span>
+                    </div>
+                    <div class="mt-4">
+                      <p class="text-sm font-semibold text-white mb-2">Key Learnings:</p>
+                      <ul class="list-none space-y-1">
+                        <li class="text-sm text-gray-300 flex items-start gap-2">
+                          <span class="text-purple-400 mt-1.5">•</span>
+                          <span>Advanced data analysis techniques</span>
+                        </li>
+                        <li class="text-sm text-gray-300 flex items-start gap-2">
+                          <span class="text-purple-400 mt-1.5">•</span>
+                          <span>Multiple analytical tool proficiency</span>
+                        </li>
+                        <li class="text-sm text-gray-300 flex items-start gap-2">
+                          <span class="text-purple-400 mt-1.5">•</span>
+                          <span>Comprehensive data science skills</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Deestincts Creative Bootcamp -->
+              <div class="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
+                <div class="flex items-start gap-4">
+                  <div class="w-12 h-12 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+                    </svg>
+                  </div>
+                  <div class="flex-1">
+                    <h4 class="text-xl font-bold mb-2 text-white">Deestincts Creative Bootcamp</h4>
+                    <p class="text-purple-400 font-medium mb-2">Brand Identity Design</p>
+                    <p class="text-gray-300 mb-3 text-sm">Comprehensive training in brand identity design principles, logo creation, and visual identity systems.</p>
+                    <div class="flex items-center gap-2 mb-3">
+                      <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                      </svg>
+                      <span class="text-gray-400 text-sm">2023</span>
+                    </div>
+                    <div class="mt-4">
+                      <p class="text-sm font-semibold text-white mb-2">Key Learnings:</p>
+                      <ul class="list-none space-y-1">
+                        <li class="text-sm text-gray-300 flex items-start gap-2">
+                          <span class="text-purple-400 mt-1.5">•</span>
+                          <span>Mastered brand identity design fundamentals</span>
+                        </li>
+                        <li class="text-sm text-gray-300 flex items-start gap-2">
+                          <span class="text-purple-400 mt-1.5">•</span>
+                          <span>Developed strategic approach to visual branding</span>
+                        </li>
+                        <li class="text-sm text-gray-300 flex items-start gap-2">
+                          <span class="text-purple-400 mt-1.5">•</span>
+                          <span>Built portfolio of brand identity projects</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Synthera Fellowship -->
+              <div class="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
+                <div class="flex items-start gap-4">
+                  <div class="w-12 h-12 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                    </svg>
+                  </div>
+                  <div class="flex-1">
+                    <h4 class="text-xl font-bold mb-2 text-white">Synthera Fellowship Cohort 1</h4>
+                    <p class="text-purple-400 font-medium mb-2">Brand Design and Innovation</p>
+                    <p class="text-gray-300 mb-3 text-sm">Advanced fellowship program focused on innovative brand design strategies and contemporary design thinking.</p>
+                    <div class="flex items-center gap-2 mb-3">
+                      <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                      </svg>
+                      <span class="text-gray-400 text-sm">2024</span>
+                    </div>
+                    <div class="mt-4">
+                      <p class="text-sm font-semibold text-white mb-2">Key Learnings:</p>
+                      <ul class="list-none space-y-1">
+                        <li class="text-sm text-gray-300 flex items-start gap-2">
+                          <span class="text-purple-400 mt-1.5">•</span>
+                          <span>Explored cutting-edge brand design methodologies</span>
+                        </li>
+                        <li class="text-sm text-gray-300 flex items-start gap-2">
+                          <span class="text-purple-400 mt-1.5">•</span>
+                          <span>Collaborated with industry professionals</span>
+                        </li>
+                        <li class="text-sm text-gray-300 flex items-start gap-2">
+                          <span class="text-purple-400 mt-1.5">•</span>
+                          <span>Enhanced strategic brand positioning skills</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bizmarrow Technologies -->
+              <div class="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
+                <div class="flex items-start gap-4">
+                  <div class="w-12 h-12 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                    </svg>
+                  </div>
+                  <div class="flex-1">
+                    <h4 class="text-xl font-bold mb-2 text-white">Bizmarrow Technologies</h4>
+                    <p class="text-purple-400 font-medium mb-2">Motion Design Bootcamp</p>
+                    <p class="text-gray-300 mb-3 text-sm">Specialized training in motion graphics and dynamic visual content creation for digital platforms.</p>
+                    <div class="flex items-center gap-2 mb-3">
+                      <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                      </svg>
+                      <span class="text-gray-400 text-sm">2025</span>
+                    </div>
+                    <div class="mt-4">
+                      <p class="text-sm font-semibold text-white mb-2">Key Learnings:</p>
+                      <ul class="list-none space-y-1">
+                        <li class="text-sm text-gray-300 flex items-start gap-2">
+                          <span class="text-purple-400 mt-1.5">•</span>
+                          <span>Gained expertise in motion design principles</span>
+                        </li>
+                        <li class="text-sm text-gray-300 flex items-start gap-2">
+                          <span class="text-purple-400 mt-1.5">•</span>
+                          <span>Learned industry-standard animation tools</span>
+                        </li>
+                        <li class="text-sm text-gray-300 flex items-start gap-2">
+                          <span class="text-purple-400 mt-1.5">•</span>
+                          <span>Expanded capabilities in digital storytelling</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Education -->
+          <div>
+            <div class="flex items-center gap-3 mb-8">
+              <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14v7m0 0l-3-3m3 3l3-3"/>
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold text-white">Education</h3>
+            </div>
+            
+            <div class="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
+              <div class="flex flex-col md:flex-row md:items-start gap-6">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14v7m0 0l-3-3m3 3l3-3"/>
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <h4 class="text-xl font-bold mb-2 text-white">Bachelor of Arts in Linguistics</h4>
+                  <p class="text-purple-400 font-medium mb-2">University of Abuja</p>
+                  <p class="text-gray-300 mb-4 text-sm">B.A. in Linguistics - providing deep understanding of communication, language structure, and cultural context that informs brand messaging and visual communication strategies.</p>
+                </div>
+                <div class="bg-gray-800/50 rounded-xl p-4 border border-gray-700">
+                  <div class="flex items-center gap-2 mb-3">
+                    <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                    </svg>
+                    <span class="text-white text-sm font-medium">Completed</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    </svg>
+                    <span class="text-white text-sm">Abuja, Nigeria</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </MotionWrapper>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA Section -->
+  <section class="section relative overflow-hidden">
+    <!-- Black Abstract Background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-black via-[#0a0a0a] to-black">
+      <div class="absolute inset-0 opacity-40" style="background-image: radial-gradient(circle at 30% 40%, rgba(139, 92, 246, 0.15) 0%, transparent 50%), radial-gradient(circle at 70% 60%, rgba(236, 72, 153, 0.15) 0%, transparent 50%), radial-gradient(circle at 50% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);"></div>
+      <div class="absolute inset-0" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(139, 92, 246, 0.03) 2px, rgba(139, 92, 246, 0.03) 4px);"></div>
+    </div>
+    
+    <div class="container relative z-10">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white">
+          Let's Work <span class="gradient-text">Together</span>
+        </h2>
+        <p class="text-gray-300 mb-8">
+          Have a project in mind? We'd love to hear from you.
+        </p>
+        <a href="/contact" class="btn btn-primary btn-lg">
+          Get in Touch
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,50 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const { title, description = 'AnikeBrands - Creative Design Portfolio', ogImage = '/og-image.jpg' } = Astro.props;
+const siteURL = Astro.site || import.meta.env.PUBLIC_SITE_URL || 'https://anikebrands.com';
+const ogImageURL = ogImage.startsWith('http') ? ogImage : new URL(ogImage, siteURL).toString();
+const canonicalURL = new URL(Astro.url.pathname, siteURL);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/anike logos/anikefavicon-white.svg" />
+    <link rel="icon" type="image/png" href="/anike logos/anikefavicon-white.png" />
+    <link rel="shortcut icon" href="/anike logos/anikefavicon-white.png" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- SEO Meta Tags -->
+    <title>{title}</title>
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+    <link rel="canonical" href={canonicalURL} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
