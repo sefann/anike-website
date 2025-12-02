@@ -74,7 +74,7 @@ const FAQModal = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={onClose}
+            onClick={handleClose}
             className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50"
           />
           
@@ -94,7 +94,7 @@ const FAQModal = () => {
                   Frequently Asked <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Questions</span>
                 </h2>
                 <button
-                  onClick={onClose}
+                  onClick={handleClose}
                   className="w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center text-gray-400 hover:text-white transition-colors"
                   aria-label="Close"
                 >
@@ -129,7 +129,7 @@ const FAQModal = () => {
               {/* Footer */}
               <div className="p-6 border-t border-gray-800">
                 <button
-                  onClick={onClose}
+                  onClick={handleClose}
                   className="w-full px-6 py-3 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium hover:from-purple-600 hover:to-pink-600 transition-all"
                 >
                   Close

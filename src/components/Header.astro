@@ -6,6 +6,14 @@ const navItems = [
   { label: 'Projects', href: '/projects' },
   { label: 'Gallery', href: '/gallery' },
 ];
+
+const currentPath = Astro.url.pathname;
+const isActive = (href) => {
+  if (href === '/') {
+    return currentPath === '/' || currentPath === '';
+  }
+  return currentPath.startsWith(href);
+};
 ---
 
 <header class="sticky top-0 z-50 bg-[#0d0518]/95 backdrop-blur-sm border-b border-[#1a0a2e] h-16 md:h-20 overflow-visible">
@@ -25,7 +33,9 @@ const navItems = [
             <li>
               <a 
                 href={item.href}
-                class="text-white hover:text-primary font-medium text-sm transition-colors"
+                class={`text-white hover:text-primary font-medium text-sm transition-colors relative pb-1 ${
+                  isActive(item.href) ? 'border-b-2 border-pink-400' : ''
+                }`}
               >
                 {item.label}
               </a>
@@ -61,7 +71,9 @@ const navItems = [
           <li>
             <a 
               href={item.href}
-              class="text-white hover:text-primary font-medium block py-2 transition-colors"
+              class={`text-white hover:text-primary font-medium block py-2 transition-colors relative ${
+                isActive(item.href) ? 'border-l-4 border-pink-400 pl-3' : 'pl-0'
+              }`}
             >
               {item.label}
             </a>

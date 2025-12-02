@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import MotionWrapper from '../components/react/MotionWrapper.jsx';
-import FAQModal from '../components/react/FAQModal.jsx';
 import CountUp from '../components/react/CountUp.jsx';
 ---
 
@@ -39,10 +38,17 @@ import CountUp from '../components/react/CountUp.jsx';
   
   <!-- Contact Form Section -->
   <section class="py-12 md:py-16 relative overflow-hidden">
-    <!-- Abstract Dark Background with Purple/Pink Hue -->
-    <div class="absolute inset-0 bg-gradient-to-br from-[#0d0518] via-[#1a0d2e] to-[#0d0518]">
-      <div class="absolute inset-0 opacity-30" style="background-image: radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.1) 0%, transparent 50%), radial-gradient(circle at 40% 20%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);"></div>
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+      <img 
+        src="/assets/genback.png" 
+        alt="Background"
+        class="w-full h-full object-cover"
+      />
     </div>
+    
+    <!-- Dark Transparent Overlay -->
+    <div class="absolute inset-0 bg-black/80"></div>
     
     <div class="container relative z-10">
       <div class="max-w-4xl mx-auto">
@@ -50,7 +56,7 @@ import CountUp from '../components/react/CountUp.jsx';
           <!-- Contact Form -->
           <div class="lg:col-span-2">
             <MotionWrapper client:load delay={0.1}>
-              <div>
+              <div class="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-gray-800">
                 <h2 class="text-xl md:text-2xl font-bold mb-1 text-white">Send Me a Message</h2>
                 <p class="text-sm text-gray-300 mb-6">Fill out the form below and I'll get back to you within 24 hours.</p>
                 
@@ -159,7 +165,7 @@ import CountUp from '../components/react/CountUp.jsx';
           <!-- Sidebar -->
           <div class="lg:col-span-1">
             <MotionWrapper client:load delay={0.2}>
-              <div>
+              <div class="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-gray-800">
                 <!-- Get In Touch -->
                 <div>
                   <h3 class="text-lg font-bold mb-4 text-white">Get In Touch</h3>
@@ -232,24 +238,21 @@ import CountUp from '../components/react/CountUp.jsx';
             </div>
             
             <div class="text-center pt-4">
-              <button 
-                id="read-more-faq"
+              <a 
+                href="/faqs"
                 class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium hover:from-purple-600 hover:to-pink-600 transition-all"
               >
                 Read More FAQs
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                 </svg>
-              </button>
+              </a>
             </div>
           </div>
         </MotionWrapper>
       </div>
     </div>
   </section>
-  
-  <!-- FAQ Modal -->
-  <FAQModal client:load />
 
   <!-- CTA Section -->
   <section class="section relative overflow-hidden">
@@ -273,7 +276,7 @@ import CountUp from '../components/react/CountUp.jsx';
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                 </svg>
               </a>
-              <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-white text-white font-medium hover:bg-white/10 transition-all">
+              <a href="https://wa.me/2349060160288" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-white text-white font-medium hover:bg-white/10 transition-all">
                 Let's Chat
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>

@@ -1,0 +1,126 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import MotionWrapper from '../components/react/MotionWrapper.jsx';
+---
+
+<BaseLayout 
+  title="FAQs - AnikeBrands"
+  description="Frequently asked questions about AnikeBrands design services, process, and more."
+>
+  <!-- Hero Section -->
+  <section class="section-lg relative overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+      <img 
+        src="/assets/whiteback.png" 
+        alt="Background"
+        class="w-full h-full object-cover"
+      />
+    </div>
+    
+    <!-- Dark Transparent Overlay -->
+    <div class="absolute inset-0 bg-black/80"></div>
+    
+    <div class="container relative z-10">
+      <div class="max-w-3xl mx-auto text-center">
+        <MotionWrapper client:load>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white">
+            Frequently Asked <span class="gradient-text">Questions</span>
+          </h1>
+          <p class="text-xl text-gray-200 mb-4">
+            Find answers to common questions about our design services, process, and more.
+          </p>
+        </MotionWrapper>
+      </div>
+    </div>
+  </section>
+  
+  <!-- FAQs Section -->
+  <section class="section relative overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+      <img 
+        src="/assets/genback.png" 
+        alt="Background"
+        class="w-full h-full object-cover"
+      />
+    </div>
+    
+    <!-- Dark Transparent Overlay -->
+    <div class="absolute inset-0 bg-black/80"></div>
+    
+    <div class="container relative z-10">
+      <div class="max-w-4xl mx-auto">
+        <MotionWrapper client:load>
+          <div class="space-y-6">
+            <div class="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-gray-800">
+              <h3 class="text-xl md:text-2xl font-bold mb-3 text-white">How long does a typical project take?</h3>
+              <p class="text-gray-300 leading-relaxed">
+                Project timelines vary based on scope and complexity. Brand identity projects typically take 2-3 weeks, while web design projects can take 3-4 weeks.
+              </p>
+            </div>
+            
+            <div class="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-gray-800">
+              <h3 class="text-xl md:text-2xl font-bold mb-3 text-white">Do you offer revisions?</h3>
+              <p class="text-gray-300 leading-relaxed">
+                Yes! All projects include revisions. The number depends on the package you choose, ranging from 2-5 revisions to unlimited revisions for enterprise projects.
+              </p>
+            </div>
+            
+            <div class="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-gray-800">
+              <h3 class="text-xl md:text-2xl font-bold mb-3 text-white">What is included in a brand identity package?</h3>
+              <p class="text-gray-300 leading-relaxed">
+                A complete brand identity package typically includes logo design, brand guidelines, color palette, typography selection, and usage examples. Additional elements like business cards, letterheads, or social media templates can be added based on your needs.
+              </p>
+            </div>
+            
+            <div class="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-gray-800">
+              <h3 class="text-xl md:text-2xl font-bold mb-3 text-white">Do you work with international clients?</h3>
+              <p class="text-gray-300 leading-relaxed">
+                Yes! While we're based in Nigeria, we work with clients worldwide. We're experienced in remote collaboration and can accommodate different time zones to ensure smooth communication throughout the project.
+              </p>
+            </div>
+            
+            <div class="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-gray-800">
+              <h3 class="text-xl md:text-2xl font-bold mb-3 text-white">What is your design process?</h3>
+              <p class="text-gray-300 leading-relaxed">
+                Our process typically involves discovery and research, strategy development, concept creation, refinement based on feedback, and final delivery. We keep you involved at every stage to ensure the final design aligns perfectly with your vision.
+              </p>
+            </div>
+            
+            <div class="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-gray-800">
+              <h3 class="text-xl md:text-2xl font-bold mb-3 text-white">Can you help with existing brands that need a refresh?</h3>
+              <p class="text-gray-300 leading-relaxed">
+                Absolutely! We specialize in brand refreshes and can help modernize your existing brand while maintaining its core identity. We'll work with you to understand what's working and what needs updating.
+              </p>
+            </div>
+            
+            <div class="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-gray-800">
+              <h3 class="text-xl md:text-2xl font-bold mb-3 text-white">What file formats will I receive?</h3>
+              <p class="text-gray-300 leading-relaxed">
+                You'll receive all necessary file formats including vector files (AI, EPS, SVG), high-resolution raster files (PNG, JPG), and web-optimized formats. We also provide brand guidelines and usage instructions.
+              </p>
+            </div>
+            
+            <div class="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-gray-800">
+              <h3 class="text-xl md:text-2xl font-bold mb-3 text-white">How do I get started?</h3>
+              <p class="text-gray-300 leading-relaxed">
+                Simply fill out the contact form above or reach out via email or phone. We'll schedule a free consultation to discuss your project, understand your needs, and provide a detailed proposal with timeline and pricing.
+              </p>
+            </div>
+          </div>
+          
+          <div class="text-center mt-12">
+            <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium hover:from-purple-600 hover:to-pink-600 transition-all">
+              Still have questions? Get in Touch
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </MotionWrapper>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
