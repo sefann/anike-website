@@ -13,8 +13,26 @@ export async function getStaticPaths() {
   return paths;
 }
 
+// Map slugs to background logos
+const backgroundLogoMap = {
+  '30-pol': '/background logos/30pointsoflight.png',
+  'burning-altar': '/background logos/burningalter.png',
+  'chicares': '/background logos/chicares.png',
+  'creamy-crumbles': '/background logos/CCRUMBLES LOGO-B.png',
+  'hebron-sage': '/background logos/hebron and sage.jpg',
+  'justice-research-institute': '/background logos/JRI LOGO-B.jpg',
+  'mc-obed': '/background logos/mc obed8.png',
+  'sallyz': '/background logos/SALLYZ LOGO-B.png',
+  'the-gospel-experience': '/background logos/TGE LOGOS-B.png',
+  'the-real-estate-chic': '/background logos/therealestatechic.jpg',
+  'unpack-it': '/background logos/UNPACK IT LOGO-B.png',
+};
+
 const { item, brandDetail } = Astro.props;
-const brand = brandDetail || {
+// Get background logo for this project
+const backgroundLogo = backgroundLogoMap[item.slug] || null;
+
+const brand = brandDetail ? { ...brandDetail } : {
   title: item.title,
   logo: item.image,
   summary: item.description,
@@ -28,6 +46,11 @@ const brand = brandDetail || {
   scopeOfWork: item.tags.join(', '),
   galleryImages: [item.image],
 };
+
+// Override logo with background logo if available
+if (backgroundLogo) {
+  brand.logo = backgroundLogo;
+}
 ---
 
 <BaseLayout 

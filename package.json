@@ -7,7 +7,8 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "compress-images": "node scripts/compress-images.js"
   },
   "dependencies": {
     "@astrojs/react": "^4.4.2",
