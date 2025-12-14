@@ -39,20 +39,20 @@ export default function TestimonialsCarousel({ testimonials }) {
           className="relative p-8 md:p-10 rounded-2xl bg-black border border-gray-900 shadow-xl max-w-3xl mx-auto"
         >
           {/* Large Quote Icon with Gradient */}
-          <div className="absolute top-6 left-6 w-20 h-20 rounded-full bg-gradient-to-br from-primary to-accentPink flex items-center justify-center z-10 shadow-lg">
-            <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+          <div className="absolute top-4 left-1/2 md:left-6 -translate-x-1/2 md:translate-x-0 w-12 h-12 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-primary to-accentPink flex items-center justify-center z-10 shadow-lg">
+            <svg className="w-6 h-6 md:w-10 md:h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
               <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.996 2.151c-2.433.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
             </svg>
           </div>
           
           {/* Testimonial Content */}
-          <div className="pt-4 pl-28">
-            <p className="text-white text-base md:text-lg mb-8 leading-relaxed text-left">
+          <div className="pt-16 md:pt-4 md:pl-28">
+            <p className="text-white text-base md:text-lg mb-8 leading-relaxed text-center md:text-left text-justify md:text-left px-4 md:px-0">
               {testimonials[currentIndex].content}
             </p>
             
             {/* Author Info */}
-            <div className="flex items-start gap-4 mb-6">
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-4 mb-6">
               {testimonials[currentIndex].avatar && (
                 <img
                   src={testimonials[currentIndex].avatar}
@@ -60,7 +60,7 @@ export default function TestimonialsCarousel({ testimonials }) {
                   className="w-14 h-14 rounded-full object-cover flex-shrink-0"
                 />
               )}
-              <div className="flex flex-col">
+              <div className="flex flex-col text-center md:text-left">
                 <p className="font-semibold text-white text-base mb-1">{testimonials[currentIndex].name}</p>
                 {testimonials[currentIndex].role && (
                   <p className="text-white text-sm mb-1 opacity-90">{testimonials[currentIndex].role}</p>

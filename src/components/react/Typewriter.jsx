@@ -54,3 +54,6 @@ export default function Typewriter({ texts, speed = 100, delay = 1000 }) {
 
 
 
+
+
+

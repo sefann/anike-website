@@ -16,7 +16,7 @@ const isActive = (href) => {
 };
 ---
 
-<header class="sticky top-0 z-50 bg-[#0d0518]/95 backdrop-blur-sm border-b border-[#1a0a2e] h-16 md:h-20 overflow-visible">
+<header class="sticky top-0 z-50 backdrop-blur-sm border-b border-[#1a0a2e] h-16 md:h-20 overflow-visible" style="background-color: rgba(0, 0, 0, 0.98);">
   <nav class="container h-full">
     <div class="flex items-center justify-between h-full">
       <a href="/" class="flex items-center h-full">
@@ -55,50 +55,101 @@ const isActive = (href) => {
       <!-- Mobile Menu Button -->
       <button 
         id="mobile-menu-btn"
-        class="md:hidden p-1 text-white hover:text-primary"
+        class="md:hidden p-1 text-white hover:text-primary z-50 relative"
         aria-label="Toggle menu"
       >
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
+        <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
       </button>
-    </div>
-    
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden pb-4">
-      <ul class="flex flex-col gap-4">
-        {navItems.map((item) => (
-          <li>
-            <a 
-              href={item.href}
-              class={`text-white hover:text-primary font-medium block py-2 transition-colors relative ${
-                isActive(item.href) ? 'border-l-4 border-pink-400 pl-3' : 'pl-0'
-              }`}
-            >
-              {item.label}
-            </a>
-          </li>
-        ))}
-        <li>
-          <a 
-            href="/contact"
-            class="inline-block px-6 py-2 bg-white text-gray-900 rounded-lg hover:bg-gray-100 font-medium transition-colors mt-2"
-          >
-            Contact
-          </a>
-        </li>
-      </ul>
     </div>
   </nav>
 </header>
 
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu-overlay" class="hidden md:hidden fixed inset-0 bg-black/95 backdrop-blur-md z-40 transition-opacity"></div>
+
+<!-- Mobile Menu Panel -->
+<div id="mobile-menu" class="hidden md:hidden fixed top-0 left-0 h-full w-80 max-w-[85vw] border-r border-[#1a0a2e] z-50 shadow-2xl overflow-y-auto backdrop-blur-md" style="background-color: rgba(13, 5, 24, 0.85);">
+  <div class="p-6 pt-24">
+    <ul class="flex flex-col gap-4">
+      {navItems.map((item) => (
+        <li>
+          <a 
+            href={item.href}
+            class={`mobile-menu-link text-white hover:text-primary font-medium block py-3 px-4 transition-colors relative rounded-lg ${
+              isActive(item.href) ? 'bg-[#1a0a2e] border-l-4 border-pink-400' : 'hover:bg-[#1a0a2e]/50'
+            }`}
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+      <li class="mt-4">
+        <a 
+          href="/contact"
+          class="mobile-menu-link inline-block w-full text-center px-6 py-3 bg-white text-gray-900 rounded-lg hover:bg-gray-100 font-medium transition-colors"
+        >
+          Contact
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
 <script>
   const menuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
+  const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+  const menuIcon = document.getElementById('menu-icon');
+  const closeIcon = document.getElementById('close-icon');
   
-  if (menuBtn && mobileMenu) {
+  function openMobileMenu() {
+    if (mobileMenu && mobileMenuOverlay) {
+      mobileMenu.classList.remove('hidden');
+      mobileMenuOverlay.classList.remove('hidden');
+      menuIcon?.classList.add('hidden');
+      closeIcon?.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+  
+  function closeMobileMenu() {
+    if (mobileMenu && mobileMenuOverlay) {
+      mobileMenu.classList.add('hidden');
+      mobileMenuOverlay.classList.add('hidden');
+      menuIcon?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+  }
+  
+  if (menuBtn && mobileMenu && mobileMenuOverlay) {
     menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
+      if (mobileMenu.classList.contains('hidden')) {
+        openMobileMenu();
+      } else {
+        closeMobileMenu();
+      }
+    });
+    
+    // Close menu when clicking overlay
+    mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+    
+    // Close menu when clicking menu links
+    const menuLinks = document.querySelectorAll('.mobile-menu-link');
+    menuLinks.forEach(link => {
+      link.addEventListener('click', closeMobileMenu);
+    });
+    
+    // Close menu on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+        closeMobileMenu();
+      }
     });
   }
 </script>

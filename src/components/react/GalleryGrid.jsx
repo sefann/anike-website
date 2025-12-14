@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function GalleryGrid({ images = [] }) {
   const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [offsets, setOffsets] = useState({});
+  const itemRefs = useRef({});
 
   if (!images || images.length === 0) {
     return (
@@ -12,11 +14,40 @@ export default function GalleryGrid({ images = [] }) {
     );
   }
 
+  const handleMouseEnter = (index) => {
+    const element = itemRefs.current[index];
+    if (element) {
+      const rect = element.getBoundingClientRect();
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+      
+      // Get the center of the element in its current position
+      const elementCenterX = rect.left + rect.width / 2;
+      const elementCenterY = rect.top + rect.height / 2;
+      
+      // Calculate the distance from element center to viewport center
+      const viewportCenterX = viewportWidth / 2;
+      const viewportCenterY = viewportHeight / 2;
+      
+      // Calculate how much we need to move to center it
+      const deltaX = viewportCenterX - elementCenterX;
+      const deltaY = viewportCenterY - elementCenterY;
+      
+      setOffsets(prev => ({ ...prev, [index]: { x: deltaX, y: deltaY } }));
+    }
+    setHoveredIndex(index);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredIndex(null);
+  };
+
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-4">
       {images.map((image, index) => {
         const imageName = image.split('/').pop()?.replace(/\.(jpg|jpeg|png)$/i, '') || `Image ${index + 1}`;
         const isHovered = hoveredIndex === index;
+        const offset = offsets[index] || { x: 0, y: 0 };
         
         return (
           <motion.div
@@ -25,19 +56,25 @@ export default function GalleryGrid({ images = [] }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.02 }}
             className="group relative overflow-visible cursor-pointer"
-            onMouseEnter={() => setHoveredIndex(index)}
-            onMouseLeave={() => setHoveredIndex(null)}
+            onMouseEnter={() => handleMouseEnter(index)}
+            onMouseLeave={handleMouseLeave}
           >
             <motion.div
+              ref={(el) => {
+                if (el) itemRefs.current[index] = el;
+              }}
               animate={{
                 scale: isHovered ? 2.5 : 1,
                 zIndex: isHovered ? 50 : 1,
-                y: isHovered ? -30 : 0,
-                x: isHovered ? 0 : 0,
+                x: isHovered ? offset.x : 0,
+                y: isHovered ? offset.y : 0,
               }}
               transition={{ 
                 duration: 0.4, 
                 ease: [0.25, 0.1, 0.25, 1],
+              }}
+              style={{
+                transformOrigin: 'center center',
               }}
               className="relative overflow-hidden rounded-lg bg-gray-900 shadow-xl aspect-square"
             >
